@@ -41,19 +41,15 @@ class PhoneIntakeService:
         fallback = {
             "urgency": "urgent",
             "drivability_caution": "Do not confirm the vehicle is safe to drive until a technician reviews the warning light and liftgate damage.",
-            "missing_intake_fields": [
-                        "claim number",
-                        "loss date",
-                        "clear damage photos"
-            ],
+            "missing_intake_fields": ["claim number", "loss date", "clear damage photos"],
             "next_steps": [
-                        "Capture VIN and odometer photos",
-                        "Schedule inspection",
-                        "Request claim details from customer"
+                "Capture VIN and odometer photos",
+                "Schedule inspection",
+                "Request claim details from customer",
             ],
             "customer_ready_language": "Thanks for calling. We have enough to start the intake, but we still need photos and claim details before the repair plan can move forward.",
-            "confidence": 0.72
-}
+            "confidence": 0.72,
+        }
         notes = payload.workflow_notes.lower()
         if "missing" in notes or "unknown" in notes or "to validate" in notes:
             fallback["confidence"] = min(float(fallback.get("confidence", 0.65)), 0.76)

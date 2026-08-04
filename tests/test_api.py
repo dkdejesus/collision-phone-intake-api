@@ -21,13 +21,10 @@ SAMPLE_PAYLOAD = {
     "source_records": {
         "repair_order": "SYN-RO-1001",
         "claim_status": "To Validate",
-        "data_policy": "synthetic demo data only"
+        "data_policy": "synthetic demo data only",
     },
-    "attachments": [
-        "synthetic_estimate.txt",
-        "synthetic_photos_manifest.json"
-    ],
-    "requested_by": "Portfolio Demo"
+    "attachments": ["synthetic_estimate.txt", "synthetic_photos_manifest.json"],
+    "requested_by": "Portfolio Demo",
 }
 
 
