@@ -1,0 +1,16 @@
+{
+  "reference_id": "SYN-1001",
+  "customer_name": "Jordan Rivera",
+  "vehicle": "2021 Toyota RAV4",
+  "workflow_notes": "Customer called after a rear-end impact. Liftgate will not open, warning light is on, and insurance claim number is not available yet.",
+  "source_records": {
+    "repair_order": "SYN-RO-1001",
+    "claim_status": "To Validate",
+    "data_policy": "synthetic demo data only"
+  },
+  "attachments": [
+    "synthetic_estimate.txt",
+    "synthetic_photos_manifest.json"
+  ],
+  "requested_by": "Portfolio Demo"
+}
