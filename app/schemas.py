@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -47,3 +48,15 @@ class StoredPhoneIntakeSummary(BaseModel):
 
 class PhoneIntakeListResponse(BaseModel):
     records: list[StoredPhoneIntakeSummary]
+
+
+class VapiWebhookPayload(BaseModel):
+    message: dict[str, Any]
+
+
+class VapiWebhookResponse(BaseModel):
+    status: str
+    event_type: str | None = None
+    request_id: str | None = None
+    detail: str
+    human_review_required: bool = True

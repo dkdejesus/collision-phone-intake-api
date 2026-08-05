@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     openai_model: str = "gpt-5-mini"
     request_timeout_seconds: float = 30.0
     database_path: str = "data/phone_intake.db"
+    vapi_webhook_secret: str | None = None
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 

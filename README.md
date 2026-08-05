@@ -62,7 +62,25 @@ A production version could reduce manual review time for this workflow by turnin
 - `POST /v1/phone-intakes` creates a workflow assessment.
 - `GET /v1/phone-intakes` lists recent assessment summaries.
 - `GET /v1/phone-intakes/{request_id}` retrieves a stored assessment.
+- `POST /v1/webhooks/vapi/intake-call` receives Vapi end-of-call reports and creates phone intake records.
 - `GET /health` supports deployment health checks.
+
+## Vapi phone-call automation
+
+Use this service for phone-call intake automation. Vapi should send final call reports here:
+
+```text
+https://<railway-domain>/v1/webhooks/vapi/intake-call
+```
+
+Recommended first Vapi configuration:
+
+- Send `end-of-call-report` events.
+- Treat transcript/status updates as informational only.
+- Add a webhook secret and send it as `x-vapi-webhook-secret`.
+- Keep human review required before customer-facing, insurer-facing, financial, repair, or drivability decisions.
+
+The webhook converts Vapi's final transcript into a normal phone intake record. Non-final events are acknowledged but ignored so the intake history is not filled with partial call fragments.
 
 ## Example request
 
@@ -130,6 +148,7 @@ OPENAI_API_KEY=<your key>
 OPENAI_MODEL=gpt-5-mini
 REQUEST_TIMEOUT_SECONDS=30
 DATABASE_PATH=/data/phone_intake.db
+VAPI_WEBHOOK_SECRET=<shared Vapi webhook secret>
 ```
 
 5. Add a volume mounted at `/data` so saved records survive redeploys.
